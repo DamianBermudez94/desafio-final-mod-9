@@ -1,6 +1,6 @@
 
 # BACKEND DE E-COMMERCE:
-Api rest construida en node con next y arquitectura MVC. Registra y loguea a los usuarios con el metodo Passwordless. Permite la busqueda de productos y genera ordenes de compra a traves de MercadoPago
+Api rest construida en node con next y arquitectura MVC
 
 # Tecnologias que se usaron:
 
