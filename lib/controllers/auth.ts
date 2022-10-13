@@ -37,7 +37,7 @@ export async function sendCode(email: string): Promise<string> {
     to: auth.data.email,
     subject: "Your Code",
   };
-  console.log("mensaje enviado",mail,"soy el email",process.env.SENDGRID_EMAIL);
+  
 
   
   
