@@ -12,8 +12,8 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
         // This function (`page`) will get called for each page of records.
 
         const objects = records.map((r) => {
-          console.log("soy los campos de la base",r.fields);
-          console.log("soy el object id",r.id);
+          //console.log("soy los campos de la base",r.fields);
+          //console.log("soy el object id",r.id);
           
           return {
             objectID: r.id,

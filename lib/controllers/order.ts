@@ -54,6 +54,8 @@ export async function orderProductById({ productId, userId }) {
 //cambia el status de la orden a cerrado y manda el mail al user y al interno
 async function handlePaidOrder(order) {
   const orderId = order.external_reference;
+  console.log("soy la order",orderId);
+  
   const myOrder = new Order(orderId);
   await myOrder.pull();
   myOrder.data.status = "closed";

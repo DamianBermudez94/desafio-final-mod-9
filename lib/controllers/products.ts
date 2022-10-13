@@ -11,10 +11,10 @@ export async function searchProducts(
   console.log("soy los hits",hits);
   
   const hitsResults = hits.hits as any;
-  console.log("soy los hitsresults",hitsResults);
+  console.log("soy los hitsresults",hitsResults.filter((p)=>p.in_stock));
   
   return {
-    results:hitsResults.filter((p)=>p.in_stock),
+    results:hitsResults.filter((p)=>p.In_stock),
     pagination: {
       offset,
       limit,
