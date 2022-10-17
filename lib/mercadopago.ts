@@ -26,9 +26,10 @@ const preferenceData={
         success: "https://damianbermudezdev.es",
       },
       external_reference: orderId,
-      notification_url:"https://dwf-m9-desafio-final.vercel.app/ipn/mercadopago?topic=merchant_order&id=6026542508" 
+      //notification_url:"https://webhook.site/f5664f90-788f-4c21-9b00-a0e344321149"
+      notification_url:"https://dwf-m9-desafio-final.vercel.app/ipn/mercadopago?topic=merchant_order&id=6186196503" 
     }
-    //console.log("soy la preferencia data",preferenceData);
+    console.log("soy la preferencia data",preferenceData);
     //console.log("soy la data antes de la preferencia",productData.unit_price);
     
     const res = await mercadopago.preferences.create(preferenceData);

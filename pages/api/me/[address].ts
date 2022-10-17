@@ -12,13 +12,15 @@ let bodySchema = yup
   .object()
   .shape({
     email: yup.string().email(),
-    name: yup.string(),
+    address: yup.string(),
+    
   })
   .noUnknown(true)
   .strict();
 let querySchema = yup
   .string()
-  .matches(/(email|name)/, "la url debe ser /email o /name");
+  .matches(/(email|address)/, "la url debe ser /email o /address");
+console.log("soy el bodySchema",bodySchema);
 
 async function patchHandler(
   req: NextApiRequest,
@@ -27,6 +29,7 @@ async function patchHandler(
 ) {
   const { address } = req.query;
   const data = req.body;
+console.log("soy la direccion y la data",address);
 
   if (data[address as string]) {
     const userNewData = await patchUserAddressData({
@@ -34,7 +37,10 @@ async function patchHandler(
       address,
       data,
     });
+   
+    
     res.send(userNewData);
+    console.log("soy la data nueva",userNewData);
   } else {
     res.status(400).send("los datos del body deben coincidir con la url");
   }
