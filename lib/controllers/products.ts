@@ -8,10 +8,10 @@ export async function searchProducts(
 ): Promise<object> {
   //trae los resultados del model
   const hits = await Product.getProductsByQuery({ query, limit, offset });
-  console.log("soy los hits",hits);
+ 
   
   const hitsResults = hits.hits as any;
-  console.log("soy los hitsresults",hitsResults.filter((p)=>p.in_stock));
+ 
   
   return {
     results:hitsResults.filter((p)=>p.In_stock),

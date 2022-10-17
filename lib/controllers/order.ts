@@ -54,10 +54,10 @@ export async function orderProductById({ productId, userId }) {
 //cambia el status de la orden a cerrado y manda el mail al user y al interno
 async function handlePaidOrder(order) {
   const orderId = order.external_reference;
-  console.log("soy la order id",orderId);
+  
   
   const myOrder = new Order(orderId);
-  console.log("soy mi order",myOrder);
+  
   
   await myOrder.pull();
   myOrder.data.status = "closed";
@@ -72,7 +72,7 @@ async function handlePaidOrder(order) {
   await sendMail(mail);
 
   const mail2 = {
-    message: `Se recibio un pago de $${myOrder.data.productData.Price} por la compra de ${myOrder.data.productData.Name}, numero de orden ${myOrder.id} `,
+    message: `Se recibio un pago de $${myOrder.data.productData.unit_price} por la compra de ${myOrder.data.productData.Name}, numero de orden ${myOrder.id} `,
     from: process.env.SENDGRID_EMAIL,
     to: "ecommerce@ventas.com",
     subject: "Pago exitoso",
@@ -86,7 +86,7 @@ async function handleInProcessOrder(order) {
   const myOrder = new Order(orderId);
   await myOrder.pull();
   const mail = {
-    message: `Tu pago de $${myOrder.data.productData.Price} por la compra de ${myOrder.data.productData.Name} esta siendo procesado, te avisaremos por mail cuando se haga efectivo`,
+    message: `Tu pago de $${myOrder.data.productData.unit_price} por la compra de ${myOrder.data.productData.Name} esta siendo procesado, te avisaremos por mail cuando se haga efectivo`,
     from: process.env.SENDGRID_EMAIL,
     to: myOrder.data.user.email,
     subject: "Pago pendiente",

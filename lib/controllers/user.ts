@@ -19,7 +19,7 @@ export async function patchUserAddressData({ userId, address, data }) {
   await user.pull();
   user.data[address] = data[address];
   await user.push();
-  console.log("soy la userData",user.data);
+  
   
   return user.data;
 }

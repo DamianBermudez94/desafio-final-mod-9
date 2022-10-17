@@ -17,7 +17,7 @@ export class Product {
   }
   async pull() {
     const product = await this.index.getObject(this.id);
-    console.log("soy los productos",product);
+  
     
     this.data = product;
     
@@ -40,7 +40,7 @@ export class Product {
         hits = hits.concat(batch);
       },
     });
-    console.log("soy los hits",hits);
+    
     
     return await hits;
   }

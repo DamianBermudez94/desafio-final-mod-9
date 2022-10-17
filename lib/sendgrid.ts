@@ -16,7 +16,7 @@ export async function sendMail({ message, subject, from, to }) {
       console.error(error);
     });
   if (emailRes) {
-    console.log("Soy la api de sendgrid",emailRes);
+  
     
     return { message: "email sent" };
   } else {
