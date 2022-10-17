@@ -6,6 +6,6 @@ const client = algoliasearch(
 );
 
 export const  productsIndex = client.initIndex("products");
-console.log("soy algolia",productsIndex);
+
 
 
