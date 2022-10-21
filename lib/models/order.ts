@@ -31,7 +31,8 @@ export class Order {
     ordersQuery.forEach((result) => {
       results.push({ ...result.data(), orderId: result.id });
     });
-
+    console.log("Soy los resultados de las ordenes",results);
+    
     return results;
   }
 }

@@ -9,15 +9,11 @@ async function postHandler(
   userData
 ) {
   const { productId } = req.query as any;
-  console.log("Soy el product id",productId);
-  
   try {
     const response = await orderProductById({
       productId,
       userId: userData.userId,
     });
-    console.log("Soy la orden creada",response);
-    
     res.send(response);
   } catch (error) {
     res.send({ message: error });

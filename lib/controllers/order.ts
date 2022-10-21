@@ -11,6 +11,8 @@ export async function generateOrder(data) {
     status: "pending",
     createdAt: new Date(),
   });
+  console.log("soy la orden",order);
+  
   return order;
 }
 
@@ -54,20 +56,15 @@ export async function orderProductById({ productId, userId }) {
 //cambia el status de la orden a cerrado y manda el mail al user y al interno
 async function handlePaidOrder(order) {
   const orderId = order.external_reference;
-  
-  
   const myOrder = new Order(orderId);
-  
-  
   await myOrder.pull();
   myOrder.data.status = "closed";
-  await myOrder.push();
-
+  await myOrder.push(); 
   const mail = {
     message: `Tu pago de $${myOrder.data.productData.unit_price} por la compra de ${myOrder.data.productData.Name} ha sido acreditado, gracias por tu compra`,
     from: process.env.SENDGRID_EMAIL,
     to: myOrder.data.user.email,
-    subject: "Pago exitoso",
+    subject: "Pago exitoso cabron",
   };
   await sendMail(mail);
 
@@ -103,6 +100,8 @@ export async function orderPaymentNotification(
     paid: handlePaidOrder,
     payment_in_process: handleInProcessOrder,
   };
+  console.log("Soy las acciones",actions);
+  
   const order = await getMerchantOrder(id);
 
   const action = actions[order.order_status];

@@ -2,9 +2,6 @@ import * as sgMail from "@sendgrid/mail";
 
 export async function sendMail({ message, subject, from, to }) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-//console.log("soy la api de sendrig",email);
-
-
   const emailRes = await sgMail
     .send({
       to,
@@ -16,8 +13,6 @@ export async function sendMail({ message, subject, from, to }) {
       console.error(error);
     });
   if (emailRes) {
-  
-    
     return { message: "email sent" };
   } else {
     return false;

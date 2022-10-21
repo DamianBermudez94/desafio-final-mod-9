@@ -19,7 +19,5 @@ export async function patchUserAddressData({ userId, address, data }) {
   await user.pull();
   user.data[address] = data[address];
   await user.push();
-  
-  
   return user.data;
 }

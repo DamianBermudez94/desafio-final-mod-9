@@ -30,14 +30,10 @@ export async function getProductById(id: string) {
 }
 export async function getAllProductsId() {
   const products = await Product.getAll();
-  //console.log("soy los productos",products);
-  
-  /*const ids = products.map((prod) => {
+  const ids = products.map((prod) => {
     return prod.objectID;
   });
-  console.log("soy los products",ids);*/
-  
-  return products;
+  return ids;
 }
 export async function getFeaturedProducts() {
   const hits = await Product.getProductsByQuery({
