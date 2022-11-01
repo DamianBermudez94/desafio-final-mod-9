@@ -1,6 +1,6 @@
-import { firestore } from "lib/firebase";
+import { adminFirestore } from "lib/firebase";
 
-const collection = firestore.collection("users");
+const collection = adminFirestore.collection("users");
 export class User {
   ref: FirebaseFirestore.DocumentReference;
   data: any;

@@ -13,7 +13,7 @@ export async function sendMail({ message, subject, from, to }) {
       console.error(error);
     });
   if (emailRes) {
-    return { message: "email sent" };
+    return { message: "email enviado" };
   } else {
     return false;
   }

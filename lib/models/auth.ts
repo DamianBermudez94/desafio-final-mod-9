@@ -1,7 +1,7 @@
-import { firestore } from "lib/firebase";
+import { adminFirestore } from "lib/firebase";
 import isAfter from "date-fns/isAfter";
 
-const collection = firestore.collection("auth");
+const collection = adminFirestore.collection("auth");
 export class Auth {
   ref: FirebaseFirestore.DocumentReference;
   data: any;

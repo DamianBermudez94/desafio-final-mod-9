@@ -3,12 +3,12 @@ import {Currency} from "mercadopago/shared/currency"
 mercadopago.configure({
     access_token:process.env.MP_SECRET
 });
-console.log("soy mercado pago",mercadopago);
+
 
 //Busca una merchant order en Mp
 export async function getMerchantOrder(id) {
   const res = await mercadopago.merchant_orders.get(id);
-  console.log("soy la respuesta",res);
+  console.log("soy la respuesta del merchar orders",res);
   
   return res.response;
 }
@@ -31,11 +31,9 @@ const preferenceData={
         success: "https://damianbermudezdev.es",
       },
       external_reference: orderId,
-      //notification_url:"https://webhook.site/f5664f90-788f-4c21-9b00-a0e344321149"
-      notification_url:"https://dwf-m9-desafio-final.vercel.app/ipn/mercadopago?topic=merchant_order&id=6219077058" 
+      notification_url:"https://webhook.site/f5664f90-788f-4c21-9b00-a0e344321149"
+      //notification_url:"https://dwf-m9-desafio-final.vercel.app/ipn/mercadopago?topic=merchant_order&id=6219077058" 
     }
-   
-    
     const res = await mercadopago.preferences.create(preferenceData);
     console.log("se ha creado una nueva referencia",res);
     

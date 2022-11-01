@@ -1,6 +1,6 @@
-import { firestore } from "lib/firebase";
+import { adminFirestore } from "lib/firebase";
 
-const collection = firestore.collection("orders");
+const collection = adminFirestore.collection("orders");
 export class Order {
   ref: FirebaseFirestore.DocumentReference;
   data: any;
@@ -31,8 +31,7 @@ export class Order {
     ordersQuery.forEach((result) => {
       results.push({ ...result.data(), orderId: result.id });
     });
-    console.log("Soy los resultados de las ordenes",results);
-    
+
     return results;
   }
 }

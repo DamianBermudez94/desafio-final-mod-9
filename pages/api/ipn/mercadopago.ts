@@ -4,12 +4,12 @@ import type { NextApiRequest, NextApiResponse } from "next";
 //WebHook que checkea el estado de una orden de compra
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { id, topic } = req.query;
+  console.log("Soy le topic y el id",id,topic);
+  
 
   if (topic == "merchant_order") {
   const check = await orderPaymentNotification(id as string);
-  console.log("soy el check",check);
-  
-  
+  console.log(check);
   }
   res.send("ok");
 }
