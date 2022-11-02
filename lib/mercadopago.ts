@@ -31,8 +31,8 @@ const preferenceData={
         success: "https://damianbermudezdev.es",
       },
       external_reference: orderId,
-      notification_url:"https://webhook.site/f5664f90-788f-4c21-9b00-a0e344321149"
-      //notification_url:"https://dwf-m9-desafio-final.vercel.app/ipn/mercadopago?topic=merchant_order&id=6219077058" 
+      //notification_url:"https://webhook.site/f5664f90-788f-4c21-9b00-a0e344321149"
+      notification_url:"https://dwf-m9-desafio-final.vercel.app/api/ipn/mercadopago?topic=merchant_order&id=6346197840" 
     }
     const res = await mercadopago.preferences.create(preferenceData);
     console.log("se ha creado una nueva referencia",res);

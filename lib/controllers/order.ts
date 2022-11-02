@@ -42,7 +42,7 @@ export async function orderProductById({ productId, userId }) {
     
     const orderData = { user, productData: product };
     const order = await generateOrder(orderData);
-console.log("Soy la orden del usuario",order);
+    console.log("Soy la orden del usuario",order);
 
     //un vez creada la orden genero la preferencia en mercadoPago
     const preference = await generatePreference(product, order.id);
@@ -55,14 +55,12 @@ console.log("Soy la orden del usuario",order);
 }
 
 //cambia el status de la orden a cerrado y manda el mail al user y al interno
-async function handlePaidOrder(order) {
-  console.log("sadsadasdfasdfasdf",order);
-  
+/*async function handlePaidOrder(order) {
+
   const orderId = order.external_reference;
-  console.log("soy la orderId",orderId);
-  
+
   const myOrder = new Order(orderId);
-  console.log("soy el myOrder",myOrder);
+  
   
   await myOrder.pull();
   myOrder.data.status = "closed";
@@ -98,9 +96,9 @@ async function handleInProcessOrder(order) {
   };
   await sendMail(mail);
   return "pago en proceso";
-}
+}*/
 
-export async function orderPaymentNotification(
+/*export async function orderPaymentNotification(
   id: string
 ): Promise<string | boolean> {
   //objeto con las funciones a ejecutar segun el order status
@@ -115,4 +113,4 @@ console.log("soy la order",order);
   console.log("soy la action",action,{handlePaidOrder});
   
   return action ? await action(order) : false;
-}
+}*/
