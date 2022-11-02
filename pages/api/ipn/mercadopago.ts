@@ -20,10 +20,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
           //Traigo la data de ese registro
           await myOrder.pull();
           //Modifico el campo del estado del pago
-          myOrder.data.status = "closed";
+          myOrder.data.order_status = "closed";
           
           //Actualizada la data modificada en nuestra DB
-          await myOrder.push();
+          /*await myOrder.push();
           const userId = myOrder.data.userId;
           const user = new User(userId);
           //await user.pull();
@@ -36,7 +36,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
             to: myOrder.data.user.email,
             subject: "Pago exitoso",
          
-          });
+          });*/
           res.send({ payment: true });
         } else {
           res.send({ payment: "pending" });

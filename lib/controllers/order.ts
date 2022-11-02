@@ -96,9 +96,9 @@ async function handleInProcessOrder(order) {
   };
   await sendMail(mail);
   return "pago en proceso";
-}*/
+}
 
-/*export async function orderPaymentNotification(
+export async function orderPaymentNotification(
   id: string
 ): Promise<string | boolean> {
   //objeto con las funciones a ejecutar segun el order status
