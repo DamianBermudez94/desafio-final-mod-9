@@ -1,8 +1,8 @@
 import type { NextRequest } from "next/server";
 
-export function middleware(req: NextRequest) {
+export function middlewere(req: NextRequest) {
   if (req.method == "OPTIONS") {
-    return new Response(null, {
+    return new Response("", {
       status: 204,
       headers: {
         "Access-Control-Allow-Credentials": "true",
