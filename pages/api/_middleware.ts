@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 
-export function middlewere(req: NextRequest) {
+export function middleware(req: NextRequest) {
   if (req.method == "OPTIONS") {
     return new Response("", {
       status: 204,
