@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { authMiddleware, schemaMiddleware } from "lib/middleware";
+import { authMiddleware, schemaMiddleware } from "lib/middlewares";
 import methods from "micro-method-router";
 import { getUserData, patchUserData } from "lib/controllers/user";
 import * as yup from "yup";

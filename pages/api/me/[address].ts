@@ -3,7 +3,7 @@ import {
   authMiddleware,
   querySchemaMiddleware,
   schemaMiddleware,
-} from "lib/middleware";
+} from "lib/middlewares";
 import { patchUserAddressData } from "lib/controllers/user";
 import methods from "micro-method-router";
 import * as yup from "yup";
