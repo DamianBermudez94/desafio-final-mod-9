@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "testUsers.js", "pages/api/_middlewere.ts"  ],
+, "testUsers.js", "pages/api/middleware.ts"  ],
   "exclude": [
     "node_modules"
   ]
