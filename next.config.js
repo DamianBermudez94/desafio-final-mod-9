@@ -1,3 +1,6 @@
+// next.config.js
+
+// Ejemplo, si tenés otras configuraciones en tu next.config, agregá los siguiente a lo que ya tengas
 module.exports = {
   async headers() {
      return [
