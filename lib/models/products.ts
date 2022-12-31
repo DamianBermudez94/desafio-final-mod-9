@@ -5,6 +5,7 @@ type getProductsProps = {
   query: string;
   limit: number;
   offset: number;
+
 };
 
 export class Product {
@@ -25,7 +26,7 @@ export class Product {
     const hits = await productsIndex.search(query, {
       length: limit,
       offset,
-      filters: `In_stock:true`,
+    
     });
     
     return hits;
