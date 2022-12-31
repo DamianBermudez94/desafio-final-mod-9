@@ -9,11 +9,11 @@ export async function searchProducts(
   //trae los resultados del model
   const hits = await Product.getProductsByQuery({ query, limit, offset });
  
-  console.log("soy los hits",hits);
+
   
   const hitsResults = hits.hits as any;
  
-  console.log("soy los hitsResults",hitsResults);
+  
   
   return {
     results:hitsResults.filter((p)=>p.In_stock),
