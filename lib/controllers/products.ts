@@ -18,6 +18,7 @@ export async function searchProducts(
   return {
     results:hitsResults.filter((p)=>p.In_stock),
     pagination: {
+      results: hitsResults.length,
       offset,
       limit,
       total: hits.nbHits,
