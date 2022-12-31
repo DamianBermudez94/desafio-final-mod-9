@@ -107,10 +107,10 @@ export async function orderPaymentNotification(
     payment_in_process: handleInProcessOrder,
   };
   const order = await getMerchantOrder(id);
-console.log("soy la order",order);
+
 
   const action = actions[order.order_status];
-  console.log("soy la action",action,{handlePaidOrder});
+  
   
   return action ? await action(order) : false;
 }

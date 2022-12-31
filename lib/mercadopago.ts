@@ -8,7 +8,7 @@ mercadopago.configure({
 //Busca una merchant order en Mp
 export async function getMerchantOrder(id) {
   const res = await mercadopago.merchant_orders.get(id);
-  console.log("soy la respuesta del merchar orders",res);
+  
   
   return res.response;
 }
@@ -35,7 +35,7 @@ const preferenceData={
       notification_url:"https://dwf-m9-desafio-final.vercel.app/api/ipn/mercadopago?topic=merchant_order&id=6346197840" 
     }
     const res = await mercadopago.preferences.create(preferenceData);
-    console.log("se ha creado una nueva referencia",res);
+  
     
     return res.response;
   }

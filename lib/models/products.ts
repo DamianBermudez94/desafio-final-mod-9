@@ -17,8 +17,6 @@ export class Product {
   }
   async pull() {
     const product = await this.index.getObject(this.id);
-  
-    
     this.data = product;
     
   }
@@ -27,6 +25,7 @@ export class Product {
     const hits = await productsIndex.search(query, {
       length: limit,
       offset,
+      filters: `In_stock:true`,
     });
     
     return hits;
