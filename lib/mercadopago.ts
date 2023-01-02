@@ -24,7 +24,7 @@ const preferenceData={
           picture_url: productData.Images.url,
           quantity:1,
           currency_id: "ARS" as Currency,
-          unit_price:productData.unit_price,
+          unit_price:productData.Unit_cost,
         },
       ],
       back_urls: {
