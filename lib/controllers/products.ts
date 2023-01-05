@@ -45,7 +45,7 @@ export async function getFeaturedProducts() {
     offset: 0,
   });
   const hitsResults = hits.hits as any;
-console.log("soy los resultados",hitsResults);
+
 
   return {
     results: hitsResults,
