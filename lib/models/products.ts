@@ -28,6 +28,7 @@ export class Product {
       offset,
     
     });
+    console.log("soy los hits",hits);
     
     return hits;
   }
