@@ -5,7 +5,7 @@ const client = algoliasearch(
   process.env.ALGOLIA_ADMIN_API_KEY
 );
 
-export const  productsIndex = client.initIndex("products_ecommerce");
+export const  productsIndex = client.initIndex("products");
 
 
 
