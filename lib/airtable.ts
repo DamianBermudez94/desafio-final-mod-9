@@ -1,10 +1,8 @@
 import Airtable from "airtable";
+var airtableBase = new Airtable({ apiKey: process.env.AIRTABLE_PRODUCTS_BASE }).base(
+  process.env.AIRTABLE_BASE
+);
 
-Airtable.configure({
-  endpointUrl: "https://api.airtable.com",
-  apiKey: process.env.AIRTABLE_API_KEY,
-});
-
-export const airtableBase = Airtable.base(process.env.AIRTABLE_PRODUCTS_BASE);
+export { airtableBase };
 
 
