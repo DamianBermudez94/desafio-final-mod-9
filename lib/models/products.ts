@@ -5,6 +5,7 @@ type getProductsProps = {
   query: string;
   limit: number;
   offset: number;
+
 };
 
 export class Product {
@@ -18,15 +19,17 @@ export class Product {
   async pull() {
     const product = await this.index.getObject(this.id);
     this.data = product;
+    
   }
 
   static async getProductsByQuery({ query, limit, offset }: getProductsProps) {
     const hits = await productsIndex.search(query, {
       length: limit,
       offset,
-      filters: `In_stock:true`,
+    
     });
-
+    console.log("soy los hits",hits);
+    
     return hits;
   }
   static async getAll() {
@@ -38,7 +41,8 @@ export class Product {
         hits = hits.concat(batch);
       },
     });
-
+    
+    
     return await hits;
   }
 }
