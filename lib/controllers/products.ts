@@ -3,20 +3,14 @@ import { Product } from "lib/models/products";
 export async function searchProducts(
   query: string,
   limit: number,
-  offset: number,
-  
+  offset: number
 ): Promise<object> {
   //trae los resultados del model
   const hits = await Product.getProductsByQuery({ query, limit, offset });
- 
-
-  
   const hitsResults = hits.hits as any;
- 
-  
-  
+
   return {
-    results:hitsResults.filter((p)=>p.In_stock),
+    results: hitsResults,
     pagination: {
       results: hitsResults.length,
       offset,
@@ -45,7 +39,6 @@ export async function getFeaturedProducts() {
     offset: 0,
   });
   const hitsResults = hits.hits as any;
-
 
   return {
     results: hitsResults,
