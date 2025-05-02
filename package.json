@@ -5,6 +5,9 @@
   "repository": "https://github.com/DamianBermudez94/dwf-m9-desafio-final",
   "author": "DamiBermudez <bermudezdamian7@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "@types/mercadopago": "^1.5.6",
