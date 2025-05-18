@@ -1,12 +1,27 @@
 {
-  "name": "desafio-final-mod-9",
+  "name": "back-ecommerce",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/DamianBermudez94/dwf-m9-desafio-final",
-  "author": "DamiBermudez <bermudezdamian7@gmail.com>",
+  "description": "Backend de tienda online echa con typeScript, pasarela de pago, bases de datos, sendgrid",
+  "homepage": "https://github.com/DamianBermudez94/dwf-m9-desafio-final#readme",
+  "bugs": {
+    "url": "https://github.com/DamianBermudez94/dwf-m9-desafio-final/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamianBermudez94/dwf-m9-desafio-final.git"
+  },
   "license": "MIT",
-  "engines": {
-    "node": "18.x"
+  "author": "DamiBermudez <bermudezdamian7@gmail.com>",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next",
+    "test": "ava"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
@@ -26,7 +41,9 @@
     "mercadopago": "^1.5.14",
     "micro": "^9.4.1",
     "micro-method-router": "^0.1.0",
-    "next": "^12.2.5",
+    "multer": "^1.4.5-lts.2",
+    "next": "^12.3.7",
+    "next-connect": "^0.12.2",
     "parse-bearer-token": "^1.0.1",
     "random-seed": "^0.3.0",
     "react": "^18.2.0",
@@ -34,11 +51,8 @@
     "typescript": "^4.7.4",
     "yup": "^0.32.11"
   },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next",
-    "test": "ava"
+  "engines": {
+    "node": "18.x"
   },
   "ava": {
     "nodeArguments": [

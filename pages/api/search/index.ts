@@ -8,8 +8,8 @@ module.exports = methods({
     const { offset, limit } = getLimitAndOffsetFromReq(req);
     const results = await searchProducts(req.query.q as string, limit, offset);
 
-    
 
-    res.send({results});
+
+    res.send({ results });
   },
 });

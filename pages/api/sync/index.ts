@@ -14,7 +14,7 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
         const objects = records.map((r) => {
           //console.log("soy los campos de la base",r.fields);
           //console.log("soy el object id",r.id);
-          
+
           return {
             objectID: r.id,
             ...r.fields,
@@ -31,5 +31,5 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
         }
       }
     );
-  res.send({message:"todo salio ok"});
+  res.send({ message: "todo salio ok" });
 }

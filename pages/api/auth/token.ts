@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { checkUserCode } from "lib/controllers/auth";
 import methods from "micro-method-router";
-import { schemaMiddleware } from "lib/middlewares";
+import { schemaMiddleware } from "lib/middleware/middlewares";
 import * as yup from "yup";
 
 let bodySchema = yup.object().shape({

@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { send } from "micro";
 import methods from "micro-method-router";
 import * as yup from "yup";
-import { schemaMiddleware } from "lib/middlewares";
+import { schemaMiddleware } from "lib/middleware/middlewares";
 
 let bodySchema = yup.object().shape({
   email: yup.string().email().required(),

@@ -3,7 +3,7 @@ import {
   authMiddleware,
   querySchemaMiddleware,
   schemaMiddleware,
-} from "lib/middlewares";
+} from "lib/middleware/middlewares";
 import { patchUserAddressData } from "lib/controllers/user";
 import methods from "micro-method-router";
 import * as yup from "yup";
@@ -13,14 +13,14 @@ let bodySchema = yup
   .shape({
     email: yup.string().email(),
     address: yup.string(),
-    
+
   })
   .noUnknown(true)
   .strict();
 let querySchema = yup
   .string()
   .matches(/(email|address)/, "la url debe ser /email o /address");
-console.log("soy el bodySchema",bodySchema);
+console.log("soy el bodySchema", bodySchema);
 
 async function patchHandler(
   req: NextApiRequest,
@@ -29,7 +29,7 @@ async function patchHandler(
 ) {
   const { address } = req.query;
   const data = req.body;
-console.log("soy la direccion y la data",address);
+  console.log("soy la direccion y la data", address);
 
   if (data[address as string]) {
     const userNewData = await patchUserAddressData({
@@ -37,10 +37,10 @@ console.log("soy la direccion y la data",address);
       address,
       data,
     });
-   
-    
+
+
     res.send(userNewData);
-    console.log("soy la data nueva",userNewData);
+    console.log("soy la data nueva", userNewData);
   } else {
     res.status(400).send("los datos del body deben coincidir con la url");
   }
