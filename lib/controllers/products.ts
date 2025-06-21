@@ -1,22 +1,25 @@
-import { Product } from "lib/models/products";
+import { Product, Producto } from "lib/models/products";
+import { connectDB } from "../mongoose";
+
+
 
 export async function searchProducts(
   query: string,
   limit: number,
   offset: number,
-  
+
 ): Promise<object> {
   //trae los resultados del model
   const hits = await Product.getProductsByQuery({ query, limit, offset });
- 
 
-  
+
+
   const hitsResults = hits.hits as any;
- 
-  
-  
+
+
+
   return {
-    results:hitsResults.filter((p)=>p.In_stock),
+    results: hitsResults.filter((p) => p.In_stock),
     pagination: {
       results: hitsResults.length,
       offset,
@@ -50,4 +53,11 @@ export async function getFeaturedProducts() {
   return {
     results: hitsResults,
   };
+}
+
+export async function saveProductToDB({ nombre, precio, descripcion, imagen, tipo, color }) {
+  await connectDB();
+  const nuevo = new Producto({ nombre, precio, descripcion, imagen, tipo, color });
+  await nuevo.save();
+  return nuevo;
 }
