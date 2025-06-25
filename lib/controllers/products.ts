@@ -55,9 +55,9 @@ export async function getFeaturedProducts() {
   };
 }
 
-export async function saveProductToDB({ nombre, precio, descripcion, imagen, tipo, color }) {
+export async function saveProductToDB({ nombre, precio, descripcion, imagen, tipo, color, enStock }) {
   await connectDB();
-  const nuevo = new Producto({ nombre, precio, descripcion, imagen, tipo, color });
+  const nuevo = new Producto({ nombre, precio, descripcion, imagen, tipo, color, enStock });
   await nuevo.save();
   return nuevo;
 }

@@ -11,22 +11,25 @@ export default async function handler(
     return res.status(405).json({ error: "Método no permitido" });
   }
 
-  const { nombre, precio, descripcion, imagen } = req.body;
+  const { nombre, precio, descripcion, imagen, tipo, color, enStock } =
+    req.body;
 
   if (!nombre || !precio || !descripcion || !imagen) {
     return res.status(400).json({ error: "Faltan datos requeridos" });
   }
 
   try {
-    const nuevoProducto = await saveProductToDB({
+    const producto = await saveProductToDB({
       nombre,
       precio,
       descripcion,
       imagen,
+      tipo,
+      color,
+      enStock,
     });
-    return res
-      .status(201)
-      .json({ message: "Producto guardado", producto: nuevoProducto });
+
+    return res.status(201).json({ message: "Producto guardado", producto });
   } catch (error: any) {
     console.error("Error al guardar producto:", error.message);
     return res.status(500).json({ error: "Error interno del servidor" });
