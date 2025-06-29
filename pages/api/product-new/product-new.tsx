@@ -1,6 +1,6 @@
 // /pages/api/products/new.ts
 
-import type { NextApiRequest, NextApiResponse } from "next";
+/*import type { NextApiRequest, NextApiResponse } from "next";
 import { saveProductToDB } from "../../../lib/controllers/products";
 
 export default async function handler(
@@ -33,5 +33,38 @@ export default async function handler(
   } catch (error: any) {
     console.error("Error al guardar producto:", error.message);
     return res.status(500).json({ error: "Error interno del servidor" });
+  }
+}*/
+
+import type { NextApiRequest, NextApiResponse } from "next";
+import { connectDB } from "../../../lib/mongoose";
+import { Producto } from "../../../lib/models/products";
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  try {
+    await connectDB();
+
+    const { nombre, precio } = req.body;
+
+    const nuevoProducto = new Producto({
+      nombre,
+      precio,
+      descripcion: "Producto prueba",
+      stock: 10,
+    });
+
+    const productoGuardado = await nuevoProducto.save();
+
+    res.status(201).json({ ok: true, producto: productoGuardado });
+  } catch (error) {
+    console.error("Error guardando producto:", error);
+    res.status(500).json({ ok: false, error: "Error guardando producto" });
   }
 }
