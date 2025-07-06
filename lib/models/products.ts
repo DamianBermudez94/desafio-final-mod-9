@@ -54,10 +54,10 @@ export class Product {
 import mongoose, { Schema, model, models } from "mongoose";
 
 const ProductoSchema = new Schema({
-  nombre: { type: String, required: true },
-  precio: { type: Number, required: true },
-  descripcion: { type: String, required: true },
-  imagen: { type: String, required: true },
+  nombre: { type: String, required: true, trim: true },
+  precio: { type: Number, required: true, min: 0 },
+  descripcion: { type: String, required: true, maxlength: 300 },
+  imagen: { type: String, required: true, match: /^https?:\/\// },
   tipo: { type: String },
   color: { type: String },
   enStock: { type: Boolean, default: true },

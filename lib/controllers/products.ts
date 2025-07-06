@@ -55,7 +55,14 @@ export async function getFeaturedProducts() {
   };
 }
 
+// Funcion que guarda productos con mongoDB
+// Se creo con la intencion de que maneje los productos que va subiendo el usuario
+// y que despues se sincronice con algolia
+
 export async function saveProductToDB({ nombre, precio, descripcion, imagen, tipo, color, enStock }) {
+  if (!nombre || !precio || !descripcion || !imagen) {
+    throw new Error("Faltan campos obligatorios");
+  }
   await connectDB();
   const nuevo = new Producto({ nombre, precio, descripcion, imagen, tipo, color, enStock });
   await nuevo.save();

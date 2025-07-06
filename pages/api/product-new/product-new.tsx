@@ -51,20 +51,30 @@ export default async function handler(
   try {
     await connectDB();
 
-    const { nombre, precio } = req.body;
+    const { nombre, precio, descripcion, imagen, tipo, color, enStock } =
+      req.body;
+
+    if (!nombre || !precio || !descripcion || !imagen) {
+      return res
+        .status(400)
+        .json({ ok: false, error: "Faltan campos obligatorios" });
+    }
 
     const nuevoProducto = new Producto({
       nombre,
       precio,
-      descripcion: "Producto prueba",
-      stock: 10,
+      descripcion,
+      imagen,
+      tipo,
+      color,
+      enStock,
     });
 
     const productoGuardado = await nuevoProducto.save();
 
     res.status(201).json({ ok: true, producto: productoGuardado });
-  } catch (error) {
-    console.error("Error guardando producto:", error);
+  } catch (error: any) {
+    console.error("Error guardando producto:", error.message);
     res.status(500).json({ ok: false, error: "Error guardando producto" });
   }
 }
