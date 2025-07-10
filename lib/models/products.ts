@@ -50,17 +50,31 @@ export class Product {
   }
 }
 
-// Modelo que sirve para modelar como ser van a guardar las imagenes en mongoose
-import mongoose, { Schema, model, models } from "mongoose";
+// Modelo que sirve para modelar como se van a guardar las imagenes en mongoose
+import mongoose, { Schema, model, models, Model, Document } from "mongoose";
 
-const ProductoSchema = new Schema({
-  nombre: { type: String, required: true, trim: true },
-  precio: { type: Number, required: true, min: 0 },
-  descripcion: { type: String, required: true, maxlength: 300 },
-  imagen: { type: String, required: true, match: /^https?:\/\// },
-  tipo: { type: String },
-  color: { type: String },
-  enStock: { type: Boolean, default: true },
-}, { timestamps: true });
+export interface ProductoType extends Document {
+  nombre: string;
+  precio: number;
+  descripcion: string;
+  imagen: string;
+  tipo?: string;
+  color?: string;
+  enStock?: boolean;
+}
 
-export const Producto = models.Producto || model("Producto", ProductoSchema);
+const ProductoSchema = new Schema<ProductoType>(
+  {
+    nombre: { type: String, required: true },
+    precio: { type: Number, required: true },
+    descripcion: { type: String, required: true },
+    imagen: { type: String, required: true },
+    tipo: { type: String },
+    color: { type: String },
+    enStock: { type: Boolean, default: true },
+  },
+  { timestamps: true }
+);
+
+export const Producto: Model<ProductoType> =
+  models.Producto || model<ProductoType>("Producto", ProductoSchema);
