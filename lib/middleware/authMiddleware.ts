@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 
+
 const SECRET = process.env.JWT_SECRET; // Asegurate de tenerlo en .env
 
 export async function adminAuth(req: NextApiRequest, res: NextApiResponse, next: Function) {
